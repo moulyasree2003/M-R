@@ -1,0 +1,1311 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="assets/logo.jpeg" type="image/x-icon">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <title>R&M</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+    </style>
+    <style>
+        
+        *,*::after,*::before{
+            box-sizing: border-box;
+        }
+        *{
+            font-family: Roboto;
+        }
+        html{
+            scroll-behavior: smooth;
+        }
+        html::-webkit-scrollbar{
+            display: none;
+            
+        }
+        html, body{
+            background-color: #d8d8d8;
+            padding: 0;
+            margin: 0;
+        }
+        section{
+            width: 100%;
+            
+            
+        }
+        .clothing-container {
+            padding: 10rem 9% 2rem;
+        }
+    .cart-container {
+            padding: 10rem 9% 2rem;
+        }
+        .landing {
+            padding: 10rem 9% 2rem;
+        }
+        
+        .contact-container{
+            padding: 2rem 9% 2rem;
+        }
+        .navbar{
+            position: absolute;
+            z-index: 100;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 10%;
+            background-color: rgb(0, 0, 0);
+            display: flex;
+            align-items: center;
+            padding-left: 5rem;
+            justify-content: space-between;
+        }
+        .page-logo img{
+            width: 22rem;
+        }
+        .nav-section{
+            width: 40%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+
+        }
+        .nav-section li{
+            list-style: none;
+            cursor: pointer;
+            font-size: 1.3rem;
+            margin-right: 4rem;
+        }
+        .nav-items a{
+            text-decoration: none;
+            color: rgb(255, 255, 255);
+        }
+        .nav-items a:hover{
+            color: rgb(0, 103, 247);
+        }
+
+        .btn{
+            border-radius: 2px;
+            cursor: pointer;
+            background: rgb(0, 0, 0);
+            color: rgb(0, 103, 247);
+            border: none;
+            border-radius: 15px;
+            font-size: 1.2rem;
+            padding: 15px;
+            transition: all 0.2s linear;
+        }
+
+        .btn:hover{
+            transform: scale(1.1);
+            color: white;
+            background-color: #0067f7;
+        }
+
+        #menu-icon{
+            font-size: 2.5rem;
+            color: #0067f7;
+            cursor: pointer;
+            transition: all .2s ease-in-out;
+            display: none;
+        }
+        #menu-icon:hover{
+            color: rgb(13, 0, 255);
+            transform: scale(1.1);
+        }
+
+        .home-page{
+            width: 100%;
+            height: 70%;
+            display: flex;
+            justify-content: space-around;
+        }
+        .home-left .main-content{
+            font-size: 4rem;
+            font-weight: bold;
+            text-align: center;
+            padding-top: 2rem;
+        }
+
+        .home-left .main-subtext{
+            font-size: 1.5rem;
+            text-align: center;
+            color: rgb(80, 80, 80);
+        }
+
+        .home-right img{
+            width: 40vw;
+            animation: floatImage 4s ease-in-out infinite;
+        }
+
+        .domain{
+            padding-top: 0;
+        }
+
+        .domain-top p{
+            color: rgb(49, 49, 49);
+            font-size: 2rem;
+            font-weight: bold;
+            text-align: center;
+            padding-left: 2rem;
+            padding-right: 2rem;
+        }
+
+        .domain-down{
+            width: 100%;
+        }
+        .domain-down .cards{
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-around;
+            gap: 10px; 
+            padding: 2rem;
+        }
+
+        .cards .card-sec{
+            transition: all 400ms ease-in-out;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            text-align: center;  
+        }
+
+        .cards .card-sec:hover{
+            box-shadow: 0 0 10px rgba(26, 232, 255, 0.9);
+            transform: scale(1.1);
+        }
+
+        .card-sec img{
+            width: 13rem;
+            border-radius: 15px;
+        }
+
+        .card-sec p{
+            text-align: center;
+            color: rgb(34, 34, 34);
+            font-weight: 350;
+            font-size: 1.5rem;
+        }
+
+        .domain-bg{
+            width: 100%;
+            margin-top: 5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .domain-bg .bg-text{
+            width: 85%;
+            height: auto;
+            padding: 1.5rem;
+            background-image: url(assets/bg-banner.png);
+            background-repeat: no-repeat;
+            background-position: center;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            border-radius: 20px;
+        }
+        .bg-text #bg-para{
+            width: 60%;
+        }
+        .bg-text p{
+            font-size: 2.5rem;
+            font-weight: bold;
+            color:white;
+            overflow-wrap: break-word
+        }
+        .about{
+            padding: 5rem 2rem 0 2rem;
+        }
+        .about-page{
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            padding: 2rem 9% 2rem;
+        }
+        .about-content{
+            width: 100%;
+        }
+        .sec-name{
+            color: #0067f7;
+            font-size: 1.5rem;
+            font-weight: 550;
+        }
+        .sec-heading{
+            font-size: 3rem;
+        }
+        .about-content p{
+            font-size: 1.5rem;
+            color: #4a4a4a;
+        }
+        .about-buttons{
+            width: 30%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+
+        .contact-container{
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+        }
+        .contact-container .contact-left{
+            width: 45%;
+        }
+        .contact-left .contact-ways{
+            width: 60%;
+            display: flex;
+            flex-direction: column;
+            margin-top: 3rem;
+        }
+        .contact-ways .contact-way{
+            width: 90%;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+        .contact-para{
+            font-size: 1.2rem;
+            line-height: 2;
+        }
+        .contact-way .contact-icon{
+            width: 20%;
+            padding: 0.8rem;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(144, 144, 144, 0.3);
+        }
+
+        .contact-way img{
+            width: 90%;
+        }
+        .contact-way div{
+            width: 70%;
+            display: flex;
+            flex-direction: column;
+        }
+        .contact-way span:first-child{
+            border-radius: 15px;
+        }
+        .contact-way span:nth-child(1){
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        .contact-container .contact-right{
+            width: 50%;
+            padding: 2rem;
+            box-shadow: 0 0 10px rgba(144, 144, 144, 0.3);
+        }
+
+        .contact-right h2{
+            font-size: 2rem;
+        }
+
+        #contact-form fieldset{
+            padding: 1.5rem;
+        }
+        .submit-btn{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+
+        fieldset .input-fields{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        .input-fields input{
+            font-size: 1rem;
+            font-weight: 400;
+            width: 40%;
+            padding: 1.5rem;
+            margin: 1rem;
+            background-color: #dbeaff;
+        }
+        .input-fields textarea{
+            background-color: #dbeaff;
+            width: 100%;
+            margin: 1rem;
+            padding: 1rem;
+            font-size: 1rem;
+        }
+
+        .contact-right fieldset , 
+        .contact-right input,
+        .contact-right textarea{
+            border: 0;
+        }
+
+        .wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            list-style: none;
+            padding: 0;
+        }
+        
+        .wrapper .icon {
+            position: relative;
+            background: #ffffff;
+            border-radius: 50%;
+            padding: 15px;
+            margin: 10px;
+            /* width: 50px;
+            height: 50px; */
+            width: 3.3rem;
+            font-size: 18px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+        
+        .wrapper .tooltip {
+            position: absolute;
+            top: 0;
+            font-size: 14px;
+            background: #ffffff;
+            color: #ffffff;
+            padding: 5px 8px;
+            border-radius: 5px;
+            box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+        
+        .wrapper .tooltip::before {
+            position: absolute;
+            content: "";
+            height: 8px;
+            width: 8px;
+            background: #ffffff;
+            bottom: -3px;
+            left: 50%;
+            transform: translate(-50%) rotate(45deg);
+            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+        
+        .wrapper .icon:hover .tooltip {
+            top: -45px;
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+        }
+        
+        .wrapper .icon:hover span,
+        .wrapper .icon:hover .tooltip {
+            text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.1);
+        }
+        
+        .wrapper .facebook:hover,
+        .wrapper .facebook:hover .tooltip,
+        .wrapper .facebook:hover .tooltip::before {
+            background: #1877F2;
+            color: #ffffff;
+        }
+        
+        .wrapper .twitter:hover,
+        .wrapper .twitter:hover .tooltip,
+        .wrapper .twitter:hover .tooltip::before {
+            background: #3c3c3c;
+            color: #ffffff;
+        }
+        
+        .wrapper .instagram:hover,
+        .wrapper .instagram:hover .tooltip,
+        .wrapper .instagram:hover .tooltip::before {
+            background: #E4405F;
+            color: #ffffff;
+        }
+        
+        .wrapper .github:hover,
+        .wrapper .github:hover .tooltip,
+        .wrapper .github:hover .tooltip::before {
+            background: #333333;
+            color: #ffffff;
+        }
+        
+        .wrapper .linkedin:hover,
+        .wrapper .linkedin:hover .tooltip,
+        .wrapper .linkedin:hover .tooltip::before {
+            background:#006599;
+            color: #ffffff;
+        }
+
+        .footer{
+            width: 100%;
+            min-height: auto;
+            padding: 1.5rem;
+            background-color: rgb(0, 0, 0);
+        }
+        .footer-content{
+            width: 100%;
+            margin-top: 4rem;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: flex-start;
+            justify-content: space-evenly;
+        }
+
+        .fc{
+            width: 30%;
+        }
+
+        .fc1 img{
+            width: 100%;
+        }
+
+        .fc2{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .fc2 span{
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: rgb(255, 255, 255);
+        }
+        /* .fc2 div{
+            width: 100%;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+        } */
+        .fc2 ul{
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: space-between;
+        }
+        .fc2 li{
+            list-style: none;
+            margin-bottom: 1.2rem;
+        }
+        .fc2 a{
+            text-decoration: none;
+            font-size: 1rem;
+            color: #c5c6c9;
+        }
+        .fc2 a:hover{
+            color: #0067f7;
+        }
+        .fc3 span{
+            font-weight: 500;
+            font-size: 1.2rem;
+            color: rgb(255, 255, 255);
+        }
+        .fc3 div{
+            margin-top: 2rem;
+        }
+        .fc3 input{
+            width: 70%;
+            padding: 0.7rem;
+        }
+        .fc3 button{
+            cursor: pointer;
+            width: 15%;
+            padding: 0.8rem;
+            color: white;
+            background-color: #0067f7;
+            border: 0;
+            
+        }
+        .fc3 button i{
+            width: 100%;
+            transition: all 0.3s ease-in-out;
+        }
+        .fc3 button i:hover{
+            transform: scale(2);
+        }
+
+
+
+
+
+        @keyframes floatImage {
+            0%{
+                transform: translateY(0);
+            }
+            50%{
+                transform: translateY(-2.4rem);
+            }
+            100%{
+                transform: translateY(0);
+            }
+        }
+        @media (max-width: 1300px) {
+            .home{
+                min-height: auto;
+            }
+            #menu-icon{
+                display: inline-block;
+            }
+            .nav-section{
+                display: none;
+                position: absolute;
+                top: 0;
+                right: 0;
+                margin-top: 5rem;
+                height: 25rem;
+                max-width: 15rem;
+                width: 100%;
+                padding: 1rem 0 0 0;
+                flex-direction: column;
+                background-color:rgb(88, 88, 89);
+                justify-content: space-evenly;
+                align-items: center;
+                row-gap: 10px;
+                border-radius: 20px;
+                z-index: 1;
+
+            }
+            .nav-section li{
+                margin-bottom: 1rem;
+                
+            }
+
+            .home-page{
+                flex-direction: column-reverse;
+                align-items: center;
+            }
+            .home-right img{
+                margin-top: 2rem;
+                width: 70vw;
+            }
+            .domain-down .cards{
+                flex-direction: column;
+            }
+            .cards .card-sec{
+                margin-bottom: 5rem;
+            }
+            .card-sec img{
+                width: 20rem;
+            }
+            .bg-text{
+                flex-direction: column;
+                align-items: center;
+                justify-content: space-between;
+            }
+            .bg-text p{
+                margin: 0;
+                text-align: center;
+            }
+            .bg-text #bg-para{
+                width: 100%;
+            }
+            .about-page{
+                padding-top: 4.5rem;
+                flex-direction: column;
+                align-items: center;
+            }
+            .about-image img{
+                margin-top: 2rem;
+                width: 70vw;
+            }
+            .about-content{
+                width: 80%;
+                padding-top: 2rem;
+            }
+            .conatct{
+                padding: 1rem;
+            }
+            .contact-container{
+                flex-direction: column;
+                align-items: center;
+            }
+            .contact-container .contact-left{
+                width: 100%;
+            }
+            .contact-container .contact-right{
+                width: 100%;
+                margin-top: 1rem;
+            }
+            .contact-left .contact-ways{
+                flex-direction: row;
+                width: 100%;
+            }
+            .contact-ways .contact-way{
+                width: 50%;
+            }
+        
+        }
+        @media (max-width: 900px){
+            .home-left .main-content{
+                font-size: 2.5rem;
+            }
+            .domain-top p{
+                font-size: 1.5rem;
+            }
+            .domain-bg{
+                position: absolute;
+                left: 0;
+                right: 0;
+                transform: translateY(-7rem);
+            }
+            .bg-text p{
+                font-size: 1.5rem;
+            }
+            .about-buttons{
+                width: 50%;
+            }
+            .features-grid .feature{
+                width: 100%;
+            }
+            .contact-ways .contact-way{
+                width: 100%;
+                justify-content: space-around;
+            }
+            .contact-way .contact-icon{
+                width: 10%;
+            }
+            .contact-left .contact-ways{
+                flex-direction: column;
+            }
+            .contact-way span:nth-child(1){
+                font-size: 1.7rem;
+            }
+            .contact-way span:nth-child(2){
+                font-size: 1.2rem;
+            }
+            #contact-form fieldset{
+                padding: 1rem 0;
+            }
+            .input-fields input{
+                padding: 1.2rem;
+            }
+            .footer-content{
+                flex-direction: column;
+                align-items: center;
+            }
+            .fc{
+                width: 100%;
+                margin-bottom: 3rem;
+            }
+            .social-icons{
+                display: flex;
+                align-items: center;
+                flex-direction: column;
+            }
+            .fc2 div{
+                width: 100%;
+            }
+            .fc2 ul{
+                flex-direction: row;
+                justify-content: space-evenly;
+            }
+            .fc3{
+                display: flex;
+                align-items: center;
+                flex-direction: column;
+            }
+            .fc3 div{
+                width: 100%;
+                display: flex;
+                justify-content: center;
+            }
+            /* .fc2 , .fc3{
+                width: 20%;
+            } */
+        }
+
+        
+
+        @media (max-width: 600px){
+            .home-right img{
+                width: 85vw;
+            }
+            .about-page{
+                margin-top: 2rem;
+            }
+            .about-image img{
+                width: 85vw;
+            }
+            .page-logo img{
+                width: 50vw;
+            }
+            .nav-items:nth-child(1){
+                padding-top: 1rem;
+            }
+            .home-left .main-content{
+                font-size: 1.5rem;
+            }
+            .home-left .main-subtext{
+                font-size: 1rem;
+            }
+            .domain-top p{
+                padding: 0;
+            }
+            .bg-text button{
+                padding: 0.5rem;
+            }
+            .sec-heading{
+                font-size: 2rem;
+                text-align: center;
+            }
+            .about-buttons{
+                width: 100%;
+            }
+            .contact-way span:nth-child(1){
+                font-size: 1.5rem;
+            }
+            .contact-way span:nth-child(2){
+                font-size: 1.1rem;
+            }
+            .contact-way .contact-icon{
+                width: 15%;
+            }
+            .contact-container .contact-right{
+                padding: 0.5rem;
+            }
+            #contact-form fieldset{
+                padding: 1rem 0;
+            }
+            .input-fields input{
+                width: 100%;
+            }
+            .wrapper{
+                width: 100%;
+                justify-content: center;
+            }
+        }
+        @media (max-width: 400px){
+            .card-sec img{
+                width: 15rem;
+            }
+            .sec-name{
+                display: block;
+                text-align: center;
+            }
+            .about{
+                padding: 10rem 0 0 0;
+            }
+            .sec-heading{
+                font-size: 1.5rem;
+            }
+            .about-content p{
+                font-size: 1rem;
+            }
+            .feature p{
+                font-size: 1rem;
+            }
+            .contact-way .contact-icon{
+                width: 18%;
+            }
+            .contact-way span:nth-child(1){
+                font-size: 1.2rem;
+            }
+            .contact-way span:nth-child(2){
+                font-size: 0.8rem;
+            }
+            .fc2 ul{
+                flex-direction: column;
+                align-items: center;
+            }
+            .fc3 input{
+                width: 80%;
+            }
+        }
+        
+
+            .card-content {
+                padding: 15px;
+            }
+
+
+            .add-to-cart-btn {
+                background-color: #007bff;
+                color: #fff;
+                border: none;
+                padding: 8px 16px;
+                border-radius: 4px;
+                cursor: pointer;
+                transition: background-color 0.3s ease;
+            }
+
+            .add-to-cart-btn:hover {
+                background-color: #0056b3;
+            }
+
+            #cart-table {
+                width: 100%;
+                border-collapse: collapse;
+            }
+
+            #cart-table th, #cart-table td {
+                padding: 8px;
+                border-bottom: 1px solid #ddd;
+                text-align: left;
+            }
+
+            #cart-table th {
+                background-color: #f2f2f2;
+            }
+
+            .cart-item-image {
+                width: 50px;
+                height: 50px;
+                object-fit: cover;
+            }
+            #cart-items input[type="number"] {
+                width: 40px;
+                padding: 5px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                box-sizing: border-box;
+                text-align: center;
+            }
+
+            #cart-items input[type="number"]:hover {
+                border-color: #333;
+            }
+
+            #cart-items input[type="number"]:focus {
+                outline: none;
+                border-color: #555;
+            }
+
+    </style>
+</head>
+<body>
+    <section class="home" id="home">
+        <nav class="navbar">
+            <span class="page-logo">
+                <img style="height:60px; max-height: 60px; max-width:120px; width: 120px;" src="assets/logo.jpeg" alt="logo">
+            </span>
+                <ul class="nav-section">
+                    <li class="nav-items"><a href="#domain" id="Categories">Categories</a></li>
+                    <!--li class="nav-items"><a href="#" id="dresses-link">Dresses</a></li>
+                    <li class="nav-items"><a href="#" id="skirts-link">Skirts</a></li>
+                    <li class="nav-items"><a href="#" id="blouses-link">Blouses</a></li>
+                    <li class="nav-items"><a href="#" id="outerwear-link">Outerwear</a></li-->
+                    <li class="nav-items"><a href="#about" id="about-page">About</a></li>
+                    <li class="nav-items"><a href="#contact">Contact</a></li>
+                    <li class="nav-items"><a href="#" onclick="showCart()">Cart</a></li>
+                    
+                </ul>
+                
+            <i class='bx bx-menu' id="menu-icon"></i>
+        </nav>
+        <div class="landing home-page">
+            <div class="home-left">
+                <p class="main-content">
+                    Step into a world of timeless elegance.
+                </p>
+                <p class="main-subtext">Explore classic style at our vintage clothes store.</p>
+            </div>
+            <div class="home-right">
+                <img src="assets/home.png" alt="hero">
+            </div>
+        </div>
+    </section>
+    
+    <section class="landing domain" id="domain">
+        <div class="domain-top">
+            <p>Explore our curated collection of timeless vintage styles for every occasion.</p>
+        </div>
+        <div class="domain-down">
+            <div class="cards">
+                <div class="card-sec" id="dresses-link">
+                    <img src="assets/dress13.jpg" alt="dresses">
+                    <p>Dresses</p>
+                </div>
+                <div class="card-sec" id="skirts-link">
+                    <img src="assets/skirt14.jpg" alt="skirts">
+                    <p>Skirts</p>
+                </div>
+                <div class="card-sec" id="blouses-link">
+                    <img src="assets/blouse14.jpg" alt="blouses">
+                    <p>Blouses</p>
+                </div>
+                <div class="card-sec" id="outerwear-link">
+                    <img src="assets/outerwear12.jpg" alt="outerwear">
+                    <p>Outerwear</p>
+                </div>
+                <div class="card-sec" id="accessories-link">
+                    <img src="assets/accessories13.jpg" alt="accessories">
+                    <p>Accessories</p>
+                </div>
+            </div>
+        </div>
+        <div class="domain-bg">
+            <div class="bg-text">
+                <span id="bg-para"><p>Find unique clothes that never go out of style. </p></span>
+                <span><a  href="#domain" ><button type="button" class="btn">Get Started</button></a></span>
+            </div>
+        </div>
+    </section>
+    <section clas="clothing" >
+        <div class="clothing-container" id="clothing-container">
+            <div class="domain-down">
+                <div class="cards" id="cards">
+                </div>
+            </div>
+        </div>
+    </section>
+    <section clas="cart" >
+        <div class="cart-container" id="cart-container" style="display: none;">
+            <table id="cart-table">
+                <thead>
+                    <tr>
+                        <th>Image</th>
+                        <th>Name</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                    </tr>
+                </thead>
+                <tbody id="cart-items">
+                    <!-- Cart items will be displayed here -->
+                </tbody>
+            </table>
+        </div>
+    </section>
+    <section class="landing about" id="about">
+        <div class="about-page" >
+            <div class="about-content">
+                <span class="sec-name">About Us</span>
+                <h3 class="sec-heading">R&M: Your Reliable Partner for Vintage Fashion Excellence.</h3>
+                <p class="about-upper-para">At our R&M, we handpick each item for its quality and character. Embrace the beauty of the past while staying effortlessly stylish.</p>
+                <p class="about-lower-para"> Explore our collection of timeless pieces that add a touch of vintage charm to your wardrobe. Join us in celebrating style that never fades.</p>
+            </div>
+        </div>
+    </section>
+    <section class="contact" id="contact">
+        <div class="contact-container">
+            <div class="contact-left">
+                <span class="sec-name">Contact Us</span>
+                <h1 class="sec-heading">Get In Touch</h1>
+                <p class="contact-para">Whether you have queries about our services or want to discuss a project, we're just a message away. Our team is ready to assist you and provide the information you need to get started or enhance your experience with us.</p>
+                <div class="contact-ways">
+                    <div class="contact-way">
+                        <span class="contact-icon"><img src="assets/1.png" alt="maps"></span>
+                        <div>
+                            <span>Vist Us :</span>
+                            <span>Bengaluru, Karnataka</span>
+                        </div>
+                    </div>
+                    <div class="contact-way">
+                        <span class="contact-icon"><img src="assets/2.png" alt="mail"></span>
+                        <div>
+                            <span>Mail Us :</span>
+                            <span>support@rm.com</span>
+                        </div>
+                    </div>
+                    <div class="contact-way">
+                        <span class="contact-icon"><img src="assets/3.png" alt="phone"></span>
+                        <div>
+                            <span>Phone :</span>
+                            <span>(+91) 9999999999</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-right">
+                <div class="contact-form">
+                    <h2>Drop Us a Line</h2>
+
+                    <form id="contact-form" method="" action="">
+                        <fieldset>
+                            <div id="form-messages"></div>
+                            <div class="input-fields">
+                                <input type="text" name="name" placeholder="Name" required>
+                                <input type="email" name="email" placeholder="E-Mail" required>
+                                <input type="text" name="phone-number" placeholder="Phone Number" required>
+                                <input type="text" name="subject" placeholder="Subject" required>
+                                <textarea name="message" id="message" cols="10" rows="5" placeholder="Your Message Here" required></textarea>
+                            </div>
+                        </fieldset>
+                        <div class="submit-btn"><button type="submit" class="btn">Submit Now</button></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="footer" id="footer">
+        <div class="footer-content">
+            <div class="fc1 fc">
+                <span><img src="assets/logo.jpeg" style="height:160px; max-height: 160px; max-width:300px; width: 300px; padding-left: 2rem;" alt=""></span>
+                <div class="social-icons">
+                    <ul class="wrapper">
+                        <li class="icon facebook">
+                            <span class="tooltip">Facebook</span>
+                            <span><i class="fab fa-facebook-f"></i></span>
+                        </li>
+                        <li class="icon twitter">
+                            <span class="tooltip">X</span>
+                            <span><i class="fa-brands fa-x-twitter"></i></span>
+                        </li>
+                        <li class="icon instagram">
+                            <span class="tooltip">Instagram</span>
+                            <span><i class="fab fa-instagram"></i></span>
+                        </li>
+                        <li class="icon github">
+                            <span class="tooltip">Github</span>
+                            <span><i class="fab fa-github"></i></span>
+                        </li>
+                        <li class="icon linkedin">
+                            <span class="tooltip">Linkedin</span>
+                            <span><i class="fab fa-linkedin"></i></span>
+                        </li>
+                        </ul>
+                </div>
+            </div>
+            <div class="fc2 fc">
+                <span>Quick Links</span>
+                <div>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#domain">Categories</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="fc3 fc">
+                <span>Newsletter Subscribe</span>
+                <div class="newsletter-form">
+                    <input type="text" placeholder="E - mail">
+                    <button type="button" title="subscribe"><i class="bx bx-paper-plane"></i></button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    
+
+    
+    <script>
+        let menuIcon = document.getElementById("menu-icon");
+        const navItems = document.querySelector(".nav-section");
+        let cartItems = [];
+
+// Function to handle adding items to the cart
+function addToCart(name, price, image) {
+    cartItems.push({ name, price, image });
+    console.log('Item added to cart:', name, price, image);
+    const addButton = document.querySelector(`#add-button-${name}`);
+    addButton.textContent = 'Added to Cart'; // Change text to "Added to Cart"
+    addButton.disabled = true; // Disable the button
+    addButton.style.pointerEvents = 'none';
+}
+
+// Function to display the cart items
+function showCart() {
+    const cartTableBody = document.getElementById('cart-items');
+    cartTableBody.innerHTML = '';
+
+    if (cartItems.length === 0) {
+        cartTableBody.innerHTML = '<tr><td colspan="4">Cart is empty</td></tr>';
+    } else {
+        cartItems.forEach(item => {
+            const cartRow = document.createElement('tr');
+            cartRow.innerHTML = `
+                <td><img src="${item.image}" alt="${item.name}" class="cart-item-image"></td>
+                <td>${item.name}</td>
+                <td>
+                    <input type="number" id="quantity-${item.name}" value="1" min="1" onchange="updatePrice('${item.name}', this.value, '${item.price}')">
+                </td>
+                <td class="price">${item.price}</td>
+            `;
+            cartTableBody.appendChild(cartRow);
+        });
+    }
+    const itemContainer = document.getElementById("clothing-container");
+    document.querySelectorAll(".landing").forEach(element=>{element.style.display="none";});
+    itemContainer.style.display = 'none';
+    const cartContainer = document.getElementById('cart-container');
+    cartContainer.style.display = 'block';
+}
+        function updatePrice(itemName, quantity,price) {
+            const priceElement = document.querySelector(`#quantity-${itemName}`);
+            const pricePerUnit = parseFloat(price.replace('$', ''));
+            const totalPriceElement = priceElement.closest('tr').querySelector('.price');
+    //console.log(totalPriceElement); 
+    totalPriceElement.textContent = `$${(pricePerUnit * quantity).toFixed(2)}`;
+}
+
+        document.getElementById('dresses-link').addEventListener('click', function() {
+            document.querySelectorAll(".landing").forEach(element=>{element.style.display="none";});
+            document.getElementById("clothing-container").style.display = 'block';
+            document.getElementById("cart-container").style.display = 'none';
+            loadClothing('dresses');
+        });
+        document.getElementById('skirts-link').addEventListener('click', function() {
+            document.querySelectorAll(".landing").forEach(element=>{element.style.display="none";});
+            document.getElementById("clothing-container").style.display = 'block';
+            document.getElementById("cart-container").style.display = 'none';
+            loadClothing('skirts');
+        });
+
+        document.getElementById('blouses-link').addEventListener('click', function() {
+            document.querySelectorAll(".landing").forEach(element=>{element.style.display="none";});
+            document.getElementById("clothing-container").style.display = 'block';
+            document.getElementById("cart-container").style.display = 'none';
+            loadClothing('blouses');
+        });
+
+        document.getElementById('outerwear-link').addEventListener('click', function() {
+            document.querySelectorAll(".landing").forEach(element=>{element.style.display="none";});
+            document.getElementById("clothing-container").style.display = 'block';
+            document.getElementById("cart-container").style.display = 'none';
+            loadClothing('outerwear');
+        });
+        document.getElementById('accessories-link').addEventListener('click', function() {
+            document.querySelectorAll(".landing").forEach(element=>{element.style.display="none";});
+            document.getElementById("clothing-container").style.display = 'block';
+            document.getElementById("cart-container").style.display = 'none';
+            loadClothing('accessories');
+        });
+        document.getElementById('Categories').addEventListener('click', function() {
+            document.querySelectorAll(".landing").forEach(element=>{element.style.display="block";});
+            document.querySelector(".home-page").style.display = 'flex';
+            document.getElementById("clothing-container").style.display = 'none';
+            document.getElementById("cart-container").style.display = 'none';
+        });
+        document.getElementById('about-page').addEventListener('click', function() {
+            document.querySelectorAll(".landing").forEach(element=>{element.style.display="block";});
+            document.querySelector(".home-page").style.display = 'flex';
+            document.getElementById("clothing-container").style.display = 'none';
+            document.getElementById("cart-container").style.display = 'none';
+        });
+        // Function to load clothing based on category
+function loadClothing(category) {
+    // Make an AJAX request or fetch request to get clothing data based on category
+    // For demonstration purposes, let's assume you have an array of clothing items for each category
+    let clothingData;
+
+    if (category === 'dresses') {
+        clothingData = [
+            { name: 'dress1', price: '$20', image: 'assets/dress13.jpg' },
+            { name: 'dress2', price: '$20', image: 'assets/dress12.jpg' },
+            { name: 'dress3', price: '$20', image: 'assets/dress11.jpg' },
+            { name: 'dress4', price: '$20', image: 'assets/dress10.jpg' },
+            { name: 'dress5', price: '$20', image: 'assets/dress9.jpg' },
+            { name: 'dress6', price: '$20', image: 'assets/dress8.jpg' },
+            { name: 'dress7', price: '$20', image: 'assets/dress7.jpg' },
+            { name: 'dress8', price: '$25', image: 'assets/dress6.jpg' },
+            { name: 'dress9', price: '$25', image: 'assets/dress5.jpg' },
+            { name: 'dress10', price: '$25', image: 'assets/dress4.jpg' },
+            { name: 'dress11', price: '$25', image: 'assets/dress3.jpg' },
+            { name: 'dress12', price: '$25', image: 'assets/dress2.jpg' },
+            { name: 'dress13', price: '$25', image: 'assets/dress1.jpg' },
+            // Add more men's clothing items here
+        ];
+    } else if (category === 'skirts') {
+        clothingData = [
+            { name: 'skirt1', price: '$20', image: 'assets/skirt13.jpg' },
+            { name: 'skirt2', price: '$20', image: 'assets/skirt12.jpg' },
+            { name: 'skirt3', price: '$20', image: 'assets/skirt11.jpg' },
+            { name: 'skirt4', price: '$20', image: 'assets/skirt10.jpg' },
+            { name: 'skirt5', price: '$20', image: 'assets/skirt9.jpg' },
+            { name: 'skirt6', price: '$20', image: 'assets/skirt8.jpg' },
+            { name: 'skirt7', price: '$20', image: 'assets/skirt7.jpg' },
+            { name: 'skirt8', price: '$25', image: 'assets/skirt6.jpg' },
+            { name: 'skirt9', price: '$25', image: 'assets/skirt5.jpg' },
+            { name: 'skirt10', price: '$25', image: 'assets/skirt4.jpg' },
+            { name: 'skirt11', price: '$25', image: 'assets/skirt3.jpg' },
+            { name: 'skirt12', price: '$25', image: 'assets/skirt2.jpg' },
+            { name: 'skirt13', price: '$25', image: 'assets/skirt1.jpg' },
+        ];
+    } else if (category === 'blouses') {
+        clothingData = [
+            { name: 'blouse1', price: '$20', image: 'assets/blouse13.jpg' },
+            { name: 'blouse2', price: '$20', image: 'assets/blouse12.jpg' },
+            { name: 'blouse3', price: '$20', image: 'assets/blouse11.jpg' },
+            { name: 'blouse4', price: '$20', image: 'assets/blouse10.jpg' },
+            { name: 'blouse5', price: '$20', image: 'assets/blouse9.jpg' },
+            { name: 'blouse6', price: '$20', image: 'assets/blouse8.jpg' },
+            { name: 'blouse7', price: '$20', image: 'assets/blouse7.jpg' },
+            { name: 'blouse8', price: '$25', image: 'assets/blouse6.jpg' },
+            { name: 'blouse9', price: '$25', image: 'assets/blouse5.jpg' },
+            { name: 'blouse10', price: '$25', image: 'assets/blouse4.jpg' },
+            { name: 'blouse11', price: '$25', image: 'assets/blouse3.jpg' },
+            { name: 'blouse12', price: '$25', image: 'assets/blouse2.jpg' },
+            { name: 'blouse13', price: '$25', image: 'assets/blouse1.jpg' },
+        ];
+    } else if (category === 'outerwear') {
+        clothingData = [
+            { name: 'outerwear1', price: '$20', image: 'assets/outerwear13.jpg' },
+            { name: 'outerwear2', price: '$20', image: 'assets/outerwear12.jpg' },
+            { name: 'outerwear3', price: '$20', image: 'assets/outerwear11.jpg' },
+            { name: 'outerwear4', price: '$20', image: 'assets/outerwear10.jpg' },
+            { name: 'outerwear5', price: '$20', image: 'assets/outerwear9.jpg' },
+            { name: 'outerwear6', price: '$20', image: 'assets/outerwear8.jpg' },
+            { name: 'outerwear7', price: '$20', image: 'assets/outerwear7.jpg' },
+            { name: 'outerwear8', price: '$25', image: 'assets/outerwear6.jpg' },
+            { name: 'outerwear9', price: '$25', image: 'assets/outerwear5.jpg' },
+            { name: 'outerwear10', price: '$25', image: 'assets/outerwear4.jpg' },
+            { name: 'outerwear11', price: '$25', image: 'assets/outerwear3.jpg' },
+            { name: 'outerwear12', price: '$25', image: 'assets/outerwear2.jpg' },
+            { name: 'outerwear13', price: '$25', image: 'assets/outerwear1.jpg' },
+        ];
+    } else if (category === 'accessories') {
+        clothingData = [
+            { name: 'accessory1', price: '$20', image: 'assets/accessories13.jpg' },
+            { name: 'accessory2', price: '$20', image: 'assets/accessories12.jpg' },
+            { name: 'accessory3', price: '$20', image: 'assets/accessories11.jpg' },
+            { name: 'accessory4', price: '$20', image: 'assets/accessories10.jpg' },
+            { name: 'accessory5', price: '$20', image: 'assets/accessories9.jpg' },
+            { name: 'accessory6', price: '$20', image: 'assets/accessories8.jpg' },
+            { name: 'accessory7', price: '$20', image: 'assets/accessories7.jpg' },
+            { name: 'accessory8', price: '$25', image: 'assets/accessories6.jpg' },
+            { name: 'accessory9', price: '$25', image: 'assets/accessories5.jpg' },
+            { name: 'accessory10', price: '$25', image: 'assets/accessories4.jpg' },
+            { name: 'accessory11', price: '$25', image: 'assets/accessories3.jpg' },
+            { name: 'accessory12', price: '$25', image: 'assets/accessories2.jpg' },
+            { name: 'accessory13', price: '$25', image: 'assets/accessories1.jpg' },
+        ];
+    }
+
+    // Clear previous clothing items
+    const clothingContainer = document.getElementById('cards');
+    clothingContainer.innerHTML = '';
+    const cards = document.getElementById('cards');
+    // Populate the clothing items
+    clothingData.forEach(item => {
+        const clothingItem = document.createElement('div');
+        clothingItem.classList.add('card-sec');
+        clothingItem.innerHTML = `
+                    <img src="${item.image}" alt="${item.name}" style="height:240px; max-height: 240px; max-width:236px; width: 236px;" class="clothing-image">
+                        <h3 style="text-align:center;">${item.name}</h3>
+                        <p>Price: ${item.price}</p>
+                        <button id="add-button-${item.name}" class="add-to-cart-btn" onclick="addToCart('${item.name}','${item.price}','${item.image}')" >Add to Cart</button>
+        `;
+        cards.appendChild(clothingItem);
+    });
+}
+        
+        menuIcon.addEventListener("click", (e)=>{
+            navItems.style.display="flex";
+            const iconeType = menuIcon.classList.contains("bx-menu") ? "bx-menu" : "bx-x";
+            if(iconeType == "bx-menu"){
+                navItems.style.display="flex";
+                menuIcon.classList.remove("bx-menu");
+                menuIcon.classList.add("bx-x");
+            }
+            else{
+                navItems.style.display="none";
+                menuIcon.classList.remove("bx-x");
+                menuIcon.classList.add("bx-menu");
+            }
+            
+        })
+    </script>    
+</body>
+</html>
